@@ -85,6 +85,9 @@ ul{list-style:none}
 .p-gallery-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px;display:block}
 .p-gallery-name{font-family:var(--serif);font-size:.98rem;font-weight:600}
 
+/* second gallery block spacing */
+.p-gallery + .p-gallery{padding-top:56px}
+
 @media(max-width:760px){
   .p-gallery-grid{grid-template-columns:1fr;gap:18px}
   .p-gallery-card{aspect-ratio:16/10}
@@ -92,6 +95,7 @@ ul{list-style:none}
 
 /* CONTENT SECTIONS */
 .p-body{padding:100px 0}
+.p-body + .p-body{padding-top:0}
 .p-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:70px;align-items:start}
 .p-block{margin-bottom:52px}
 .p-block:last-child{margin-bottom:0}
@@ -103,6 +107,24 @@ ul{list-style:none}
 .p-list{margin-top:18px;display:flex;flex-direction:column;gap:12px}
 .p-list li{display:flex;gap:14px;font-size:.9rem;color:var(--text-body);line-height:1.6}
 .p-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0}
+
+/* PROCESS STEPS (3-step tooling) */
+.p-steps{display:flex;flex-direction:column;gap:26px;margin-top:22px}
+.p-step{display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:center;background:var(--blue-white);border:1px solid var(--blue-pale);border-radius:var(--radius-md);padding:18px;transition:box-shadow .4s var(--ease-out-expo),transform .4s var(--ease-out-expo)}
+.p-step:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.p-step-img{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1;background:var(--navy-deep)}
+.p-step-img img{width:100%;height:100%;object-fit:cover;display:block}
+.p-step-num{position:absolute;top:8px;left:8px;width:28px;height:28px;border-radius:50%;background:var(--navy-deep);color:var(--pure-white);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:800;font-size:.85rem}
+.p-step-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:6px}
+.p-step-text{font-size:.86rem;color:var(--text-body);line-height:1.7}
+@media(max-width:600px){
+  .p-step{grid-template-columns:1fr;text-align:left}
+  .p-step-img{aspect-ratio:16/10}
+}
+
+/* wide single image block (laser scan / CFT) */
+.p-wide-media{margin-top:22px;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--blue-pale)}
+.p-wide-media img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
 
 /* SIDEBAR */
 .p-sidebar{position:sticky;top:110px}
@@ -204,24 +226,67 @@ ul{list-style:none}
     </div>
     <div class="p-gallery-grid">
       <div class="p-gallery-card reveal">
-        <img src="seat1.png" alt="60:40 split seat — structural frame and hinge mechanism">
+        <img src="seat-images/laser-scanning.jpg" alt="60:40 split seat — structural frame mounted for 3D laser scanning">
         <div class="p-gallery-caption">
-          <span class="p-gallery-tag"></span>
-          <div class="p-gallery-name"></div>
+          <span class="p-gallery-tag">Reverse Engineering</span>
+          <div class="p-gallery-name">3D Laser Scanning of Seat Frame</div>
         </div>
       </div>
       <div class="p-gallery-card reveal reveal-delay-1">
-        <img src="seat2.png" alt="60:40 split seat — foam profile and cushion fitment">
+        <img src="seat-images/pre-upholstery.jpg" alt="60:40 split seat — pre-upholstery foam and trim fitment">
         <div class="p-gallery-caption">
-          <span class="p-gallery-tag"></span>
-          <div class="p-gallery-name"></div>
+          <span class="p-gallery-tag">Assembly</span>
+          <div class="p-gallery-name">Pre-Upholstery Fitment Check</div>
         </div>
       </div>
       <div class="p-gallery-card reveal reveal-delay-2">
-        <img src="seat3.png" alt="60:40 split seat — finished upholstered assembly">
+        <img src="seat-images/cft-review.jpg" alt="Cross-functional team reviewing the seat design against a physical reference part">
         <div class="p-gallery-caption">
-          <span class="p-gallery-tag"></span>
-          <div class="p-gallery-name"></div>
+          <span class="p-gallery-tag">Design Validation</span>
+          <div class="p-gallery-name">CFT Review Session</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="p-gallery">
+  <div class="container">
+    <div class="p-gallery-head reveal">
+      <div>
+        <h2 class="p-gallery-title">Foam Pattern & Mould Development</h2>
+        <p class="p-gallery-sub">The three-step tooling sequence used to take the cushion surface from a solid master pattern to a production-ready two-part mould.</p>
+      </div>
+    </div>
+    <div class="p-steps">
+      <div class="p-step reveal">
+        <div class="p-step-img">
+          <span class="p-step-num">1</span>
+          <img src="seat-images/step-1-master-pattern.jpg" alt="Step 1 — master pattern block for the seat cushion foam profile">
+        </div>
+        <div>
+          <div class="p-step-title">Step 1 — Master Pattern</div>
+          <p class="p-step-text">A solid master pattern of the cushion profile was built to the finished foam surface and edge geometry, including the rounded seat-front radius. This pattern became the single source of truth that every downstream mould and foam tool was measured against.</p>
+        </div>
+      </div>
+      <div class="p-step reveal reveal-delay-1">
+        <div class="p-step-img">
+          <span class="p-step-num">2</span>
+          <img src="seat-images/step-2-mold-impression.jpg" alt="Step 2 — silicone/rubber impression taken off the master pattern">
+        </div>
+        <div>
+          <div class="p-step-title">Step 2 — Mould Impression</div>
+          <p class="p-step-text">A flexible impression was cast directly off the master pattern to capture every surface detail and radius with no loss of definition. This impression served as the working negative used to generate the hard tooling in the next step.</p>
+        </div>
+      </div>
+      <div class="p-step reveal reveal-delay-2">
+        <div class="p-step-img">
+          <span class="p-step-num">3</span>
+          <img src="seat-images/step-3-two-part-tool.jpg" alt="Step 3 — finished two-part matched mould, top and bottom halves">
+        </div>
+        <div>
+          <div class="p-step-title">Step 3 — Two-Part Production Mould</div>
+          <p class="p-step-text">The impression was used to produce a matched top-and-bottom mould set for foam moulding/casting, with locating features built in so the two halves close repeatably in the same position — ready to hand off for trial foam pours.</p>
         </div>
       </div>
     </div>
@@ -236,6 +301,7 @@ ul{list-style:none}
         <h3 class="p-block-title">One seat, two independently folding halves, one shared envelope</h3>
         <p class="p-block-text">A 60:40 split rear seat has to fold and latch independently on each side while sharing hardpoints, seatbelt anchorage, and trim surfaces with the fixed structure around it. The brief called for a design that felt like a single, continuous seat when up, but split cleanly and reliably when folded — without adding cost or assembly steps that would slow the line.</p>
       </div>
+
       <div class="p-block reveal">
         <div class="p-block-label">Approach</div>
         <h3 class="p-block-title">Structure-first, then foam and trim around it</h3>
@@ -247,14 +313,45 @@ ul{list-style:none}
           <li>Ran design reviews with upholstery and structural teams to catch interference issues on paper rather than on the prototype bench.</li>
         </ul>
       </div>
+
+      <div class="p-block reveal">
+        <div class="p-block-label">Reverse Engineering</div>
+        <h3 class="p-block-title">3D laser scanning to validate frame geometry</h3>
+        <p class="p-block-text">The finished seat frame and folding mechanism were mounted and captured with a handheld 3D laser scanner to cross-check the physical build against the CAD surface and hardpoints. Scanning the actual welded assembly — hinges, latch, and mounting brackets included — surfaced small deviations between the released model and the fabricated part early, before they could show up as fitment or fold-clearance issues on the vehicle.</p>
+        <div class="p-wide-media">
+          <img src="seat-images/laser-scanning.jpg" alt="3D laser scanning setup on the seat frame and folding mechanism">
+        </div>
+      </div>
+
+      <div class="p-block reveal">
+        <div class="p-block-label">Design Validation</div>
+        <h3 class="p-block-title">Cross-functional team (CFT) review</h3>
+        <p class="p-block-text">The design was walked through in a formal CFT review with design, structural, and manufacturing stakeholders in the room, referencing the physical buck alongside digital captures of the surface and mechanism. Feeding scan data and hardware straight into the review meant issues were flagged and assigned on the spot rather than surfacing after tooling had already been committed.</p>
+        <div class="p-wide-media">
+          <img src="seat-images/cft-review.jpg" alt="Cross-functional team review of the split seat design">
+        </div>
+      </div>
+
+      <div class="p-block reveal">
+        <div class="p-block-label">Vendor & Program Ownership</div>
+        <h3 class="p-block-title">Vendor coordination, development, and costing</h3>
+        <p class="p-block-text">Beyond the CAD and release work, I owned the vendor-facing side of this program end to end — coordinating with the foam, mould, and fabrication vendors through pattern, mould, and trial-part development, and working the costing so the design stayed within the program's target BOM cost as it moved toward tooling sign-off.</p>
+        <ul class="p-list">
+          <li>Coordinated with tooling and foam vendors through the master-pattern, mould-impression, and two-part production-mould stages shown above.</li>
+          <li>Tracked development timelines and trial-part quality with vendors, resolving fit and finish issues flagged in CFT review and scan comparison.</li>
+          <li>Worked part and tooling costing with vendors to keep the design within target BOM cost ahead of tooling commitment.</li>
+        </ul>
+      </div>
+
       <div class="p-block reveal">
         <div class="p-block-label">Outcome</div>
         <h3 class="p-block-title">Fewer prototype cycles, one validated design</h3>
-        <p class="p-block-text">Catching fold and interference issues during CAD review, rather than after a physical build, meant fewer rounds of prototype-and-correct. The design was carried through to a feasibility-validated state ready for tooling handoff.</p>
+        <p class="p-block-text">Catching fold and interference issues during CAD review — backed by laser-scan validation and a formal CFT sign-off — rather than after a physical build, meant fewer rounds of prototype-and-correct. The design was carried through to a feasibility-validated, costed state ready for tooling handoff.</p>
       </div>
+
       <div class="p-takeaway reveal">
         <div class="p-takeaway-label">Key Takeaway</div>
-        <p class="p-takeaway-text">"A split seat only looks simple from the outside — the discipline is making the mechanism disappear behind the surface."</p>
+        <p class="p-takeaway-text">"A split seat only looks simple from the outside — the discipline is making the mechanism disappear behind the surface, and making sure the vendor, the cost, and the CAD all agree before tooling is cut."</p>
       </div>
     </div>
 
@@ -267,12 +364,16 @@ ul{list-style:none}
           <span class="p-tool-chip">GD&T</span>
           <span class="p-tool-chip">DFMEA</span>
           <span class="p-tool-chip">Sheet Metal Design</span>
+          <span class="p-tool-chip">3D Laser Scanning</span>
+          <span class="p-tool-chip">CFT Review</span>
+          <span class="p-tool-chip">Vendor Costing</span>
         </div>
       </div>
       <div class="p-side-card">
         <div class="p-side-title">Impact</div>
         <div class="p-stat-row"><div class="p-stat-num">25%</div><div class="p-stat-label">Faster prototype iteration cycles</div></div>
         <div class="p-stat-row"><div class="p-stat-num">2</div><div class="p-stat-label">Independently folding sections</div></div>
+        <div class="p-stat-row"><div class="p-stat-num">3</div><div class="p-stat-label">Step mould/tooling development</div></div>
         <div class="p-stat-row"><div class="p-stat-num">1</div><div class="p-stat-label">Shared structural envelope</div></div>
       </div>
       <a href="index.html#contact" class="p-side-cta">Discuss a Project →</a>
