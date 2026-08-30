@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -88,6 +88,11 @@ ul{list-style:none}
   .p-gallery-caption{padding:24px 22px 18px}
 }
 
+/* REAL-WORLD TEST HIGHLIGHT */
+.p-gallery-feature::after{content:'Prototype validation';position:absolute;top:22px;right:22px;padding:8px 12px;border:1px solid rgba(255,255,255,.22);border-radius:20px;background:rgba(8,14,28,.52);backdrop-filter:blur(8px);font-family:var(--mono);font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--pure-white)}
+.p-gallery-feature img{object-position:center}
+.p-block-text strong{color:var(--text-dark);font-weight:700}
+
 /* CONTENT SECTIONS */
 .p-body{padding:100px 0}
 .p-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:70px;align-items:start}
@@ -171,7 +176,7 @@ ul{list-style:none}
   <div class="container">
     <div class="p-eyebrow reveal">Patent Filed <span class="p-number">05 / 05</span></div>
     <h1 class="p-title reveal reveal-delay-1">Detachable Two-Wheeler <em>Seat</em></h1>
-    <p class="p-lede reveal reveal-delay-2">A detachable seat system for two-wheelers designed to improve rider safety and comfort, with an integrated child-safety configuration — developed from concept sketch through to a filed patent application.</p>
+    <p class="p-lede reveal reveal-delay-2">A detachable seat system for two-wheelers designed to improve rider safety and comfort, with an integrated child-safety configuration — developed from concept, CAD and mechanism design through physical prototyping, real-world riding validation, and patent filing.</p>
     <div class="p-meta reveal reveal-delay-3">
       <div class="p-meta-item"><div class="p-meta-label">Client</div><div class="p-meta-value">Independent Innovation</div></div>
       <div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Design Engineer</div></div>
@@ -201,7 +206,7 @@ ul{list-style:none}
       </div>
     </div>
     <div class="p-gallery-feature reveal">
-      <img src="patent.jpg" alt="Detachable two-wheeler seat mechanism with child-safety configuration">
+      <img src="bike-test.jpg" alt="Real-world two-wheeler prototype test showing the detachable seat system in use">
       <div class="p-gallery-caption">
         <span class="p-gallery-tag"></span>
         <div class="p-gallery-name"></div>
@@ -230,6 +235,17 @@ ul{list-style:none}
         </ul>
       </div>
       <div class="p-block reveal">
+        <div class="p-block-label">Prototype Validation</div>
+        <h3 class="p-block-title">From CAD model to a real-world riding test</h3>
+        <p class="p-block-text">The design was taken beyond the CAD environment and evaluated as a physical prototype on a two-wheeler. The prototype was checked in actual riding conditions to understand how the seat behaved with the rider, how the structure supported the load, and how the overall package integrated with the vehicle.</p>
+        <ul class="p-list">
+          <li><strong>CAD to prototype:</strong> Converted the finalized 3D design into a manufacturable physical prototype and assembled it onto the vehicle.</li>
+          <li><strong>Fit & integration:</strong> Verified mounting, seating position, clearances, access to the rider controls, and interaction with the scooter body.</li>
+          <li><strong>Ride evaluation:</strong> Conducted a real-world riding test to observe stability, ergonomics, structural behavior, and overall user confidence.</li>
+          <li><strong>Design iteration:</strong> Used observations from the physical test to identify improvements before moving toward the final design and documentation.</li>
+        </ul>
+      </div>
+      <div class="p-block reveal">
         <div class="p-block-label">Outcome</div>
         <h3 class="p-block-title">A filed patent and a validated safety concept</h3>
         <p class="p-block-text">The design reached patent-filing stage with a validated mechanism and demonstrated improvement in rider safety and comfort, including a dedicated child-safety configuration not present in standard two-wheeler seating.</p>
@@ -252,7 +268,7 @@ ul{list-style:none}
       </div>
       <div class="p-side-card">
         <div class="p-side-title">Impact</div>
-        <div class="p-stat-row"><div class="p-stat-num">35%</div><div class="p-stat-label">Improved safety & comfort</div></div>
+        <div class="p-stat-row"><div class="p-stat-num">1</div><div class="p-stat-label">Real-world prototype tested</div></div>
         <div class="p-stat-row"><div class="p-stat-num">1</div><div class="p-stat-label">Patent application filed</div></div>
         <div class="p-stat-row"><div class="p-stat-num">2</div><div class="p-stat-label">Use configurations: standard & child-safety</div></div>
       </div>
