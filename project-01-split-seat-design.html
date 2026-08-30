@@ -187,6 +187,64 @@ ul{list-style:none}
   .p-visual-inner{aspect-ratio:4/3}
   .p-takeaway{padding:40px 28px}
 }
+
+/* PROJECT RESPONSIBILITIES — highlighted portfolio section */
+.p-responsibilities{
+  margin:0 0 34px;
+  padding:26px 28px;
+  border:1px solid rgba(61,114,180,.24);
+  border-left:4px solid var(--accent);
+  border-radius:var(--radius-md);
+  background:linear-gradient(135deg,rgba(61,114,180,.10),rgba(196,149,106,.06));
+  box-shadow:var(--shadow-sm);
+}
+.p-responsibilities-title{
+  font-family:var(--serif);
+  font-size:1.18rem;
+  font-weight:700;
+  color:var(--text-dark);
+  margin-bottom:16px;
+}
+.p-responsibility-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px 14px;
+}
+.p-responsibility{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 13px;
+  border:1px solid rgba(61,114,180,.13);
+  border-radius:10px;
+  background:rgba(255,255,255,.78);
+  color:var(--text-dark);
+  font-size:.82rem;
+  font-weight:650;
+}
+.p-responsibility::before{
+  content:'✓';
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  font-size:.7rem;
+  font-weight:800;
+}
+.p-highlight{
+  color:var(--accent);
+  font-weight:750;
+}
+@media(max-width:600px){
+  .p-responsibility-grid{grid-template-columns:1fr}
+  .p-responsibilities{padding:22px 18px}
+}
+
 </style>
 </head>
 <body>
@@ -205,12 +263,28 @@ ul{list-style:none}
   <div class="container">
     <div class="p-eyebrow reveal">Automotive Seating <span class="p-number">01 / 05</span></div>
     <h1 class="p-title reveal reveal-delay-1">60:40 Split Seat <em>Design</em></h1>
-    <p class="p-lede reveal reveal-delay-2">A complete rear split-seat system engineered from structural frame through foam and upholstery, balancing crash-relevant structural requirements with day-to-day usability and a production-ready bill of materials.</p>
+    <p class="p-lede reveal reveal-delay-2">A complete rear split-seat system engineered from structural frame through foam and upholstery, with hands-on ownership across <strong>prototype design, vendor coordination, costing, vendor development, project planning, and project management</strong>—balancing structural requirements with day-to-day usability and production readiness.</p>
     <div class="p-meta reveal reveal-delay-3">
       <div class="p-meta-item"><div class="p-meta-label">Client</div><div class="p-meta-value">Futuring Design PVT LTD</div></div>
-      <div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Design Engineer</div></div>
+      <div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Design Engineer · Project &amp; Costing</div></div>
       <div class="p-meta-item"><div class="p-meta-label">Timeline</div><div class="p-meta-value">2023 — Present</div></div>
       <div class="p-meta-item"><div class="p-meta-label">Category</div><div class="p-meta-value">Automotive Seating</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="p-body" style="padding:52px 0 0;background:var(--pure-white)">
+  <div class="container">
+    <div class="p-responsibilities reveal">
+      <div class="p-responsibilities-title">Key Responsibilities &amp; Project Ownership</div>
+      <div class="p-responsibility-grid">
+        <div class="p-responsibility">Design for Prototype</div>
+        <div class="p-responsibility">Vendor Coordination</div>
+        <div class="p-responsibility">Costing &amp; Cost Estimation</div>
+        <div class="p-responsibility">Vendor Development</div>
+        <div class="p-responsibility">Project Planning</div>
+        <div class="p-responsibility">Project Management</div>
+      </div>
     </div>
   </div>
 </section>
