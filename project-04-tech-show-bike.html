@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Case study: seat and body panel prototyping for a Spark Minda technology showcase motorcycle, by Rushikesh Pote.">
+<title>Tech Show Bike — Rushikesh Pote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy-deep:#080e1c;--navy:#0c1529;--navy-mid:#12203d;--navy-light:#1a2d52;--slate:#2c4268;
+  --blue-mist:#a7bdd8;--blue-pale:#d0dced;--blue-white:#e8eff7;--off-white:#f3f6fa;--pure-white:#ffffff;
+  --accent:#3d72b4;--accent-mid:#5a8fce;--accent-light:#7baae0;
+  --accent-glow:rgba(61,114,180,0.12);--accent-glow-strong:rgba(61,114,180,0.25);
+  --gold:#c4956a;--gold-light:#dab896;--gold-glow:rgba(196,149,106,0.12);
+  --text-dark:#0b1220;--text-body:#3d4e63;--text-muted:#6d7f94;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --mono:'Space Grotesk','SF Mono',monospace;
+  --ease-out-expo:cubic-bezier(0.16,1,0.3,1);--ease-bounce:cubic-bezier(0.34,1.56,0.64,1);
+  --shadow-sm:0 4px 12px rgba(8,14,28,0.06);--shadow-md:0 12px 36px rgba(8,14,28,0.1);
+  --shadow-lg:0 24px 64px rgba(8,14,28,0.14);--shadow-xl:0 36px 80px rgba(8,14,28,0.18);
+  --radius:10px;--radius-md:14px;--radius-lg:20px;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);color:var(--text-body);background:var(--off-white);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit;transition:color .3s var(--ease-out-expo)}
+ul{list-style:none}
+.container{width:100%;max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+::selection{background:var(--accent);color:var(--pure-white)}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease-out-expo),transform .9s var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;background:rgba(243,246,250,0.9);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(8,14,28,0.05)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--navy-deep)}
+.nav-logo span{color:var(--accent)}
+.nav-back{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--text-body)}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{transition:transform .3s var(--ease-out-expo)}
+.nav-back:hover svg{transform:translateX(-4px)}
+
+/* PROJECT HERO */
+.p-hero{padding:150px 0 90px;background:linear-gradient(170deg,var(--off-white) 0%,var(--blue-white) 55%,var(--blue-pale) 100%);position:relative;overflow:hidden}
+.p-hero-blob{position:absolute;width:460px;height:460px;border-radius:50%;filter:blur(90px);top:-15%;right:-10%;background:radial-gradient(circle,rgba(61,114,180,0.16),transparent 70%);pointer-events:none}
+.p-eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:3.5px;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
+.p-eyebrow::before{content:'';width:36px;height:1.5px;background:var(--accent)}
+.p-number{font-family:var(--serif);font-weight:800;color:var(--blue-pale);font-size:1rem;margin-left:auto}
+.p-title{font-family:var(--serif);font-size:clamp(2.2rem,5.6vw,4.2rem);font-weight:800;color:var(--navy-deep);line-height:1.05;letter-spacing:-.03em;max-width:820px}
+.p-title em{font-style:italic;color:var(--slate)}
+.p-lede{font-size:1.02rem;color:var(--text-muted);max-width:600px;margin-top:22px;line-height:1.85}
+
+.p-meta{display:flex;flex-wrap:wrap;gap:0;margin-top:52px;border-top:1px solid rgba(8,14,28,0.08);padding-top:0}
+.p-meta-item{flex:1;min-width:150px;padding:22px 26px 0;border-right:1px solid rgba(8,14,28,0.06)}
+.p-meta-item:last-child{border-right:none}
+.p-meta-label{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:6px}
+.p-meta-value{font-family:var(--serif);font-size:1.02rem;font-weight:700;color:var(--text-dark)}
+
+/* VISUAL BAND */
+.p-visual{padding:0 0 0;background:var(--pure-white)}
+.p-visual-inner{background:linear-gradient(150deg,var(--navy) 0%,var(--navy-deep) 100%);border-radius:var(--radius-lg);aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-top:-40px;box-shadow:var(--shadow-xl)}
+.p-visual-icon{font-size:6rem;opacity:.9;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.3))}
+.p-visual-ring{position:absolute;border:1px solid rgba(255,255,255,0.06);border-radius:50%}
+.p-visual-ring.r1{width:340px;height:340px}
+.p-visual-ring.r2{width:480px;height:480px}
+.p-visual-tag{position:absolute;bottom:26px;left:32px;font-family:var(--mono);font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--blue-mist);opacity:.7}
+
+/* GALLERY / PROOF SECTION */
+.p-gallery{padding:90px 0 0;background:var(--pure-white)}
+.p-gallery-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:36px}
+.p-gallery-title{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:var(--text-dark);letter-spacing:-.01em}
+.p-gallery-sub{font-size:.86rem;color:var(--text-muted);max-width:420px}
+.p-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.p-gallery-card{position:relative;border-radius:var(--radius-md);overflow:hidden;background:var(--blue-white);box-shadow:var(--shadow-sm);aspect-ratio:4/5;transition:transform .5s var(--ease-out-expo),box-shadow .5s var(--ease-out-expo)}
+.p-gallery-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.p-gallery-card img{width:100%;height:100%;object-fit:cover;display:block}
+.p-gallery-caption{position:absolute;left:0;right:0;bottom:0;padding:20px 18px 16px;background:linear-gradient(0deg,rgba(8,14,28,0.85) 0%,rgba(8,14,28,0) 100%);color:var(--pure-white)}
+.p-gallery-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:4px;display:block}
+.p-gallery-name{font-family:var(--serif);font-size:.98rem;font-weight:600}
+
+@media(max-width:760px){
+  .p-gallery-grid{grid-template-columns:1fr;gap:18px}
+  .p-gallery-card{aspect-ratio:16/10}
+}
+
+/* CONTENT SECTIONS */
+.p-body{padding:100px 0}
+.p-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:70px;align-items:start}
+.p-block{margin-bottom:52px}
+.p-block:last-child{margin-bottom:0}
+.p-block-label{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.p-block-label::after{content:'';flex:1;height:1px;background:var(--blue-pale)}
+.p-block-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--text-dark);margin-bottom:16px;letter-spacing:-.01em}
+.p-block-text{font-size:.94rem;color:var(--text-body);line-height:1.9}
+.p-block-text strong{color:var(--text-dark);font-weight:600}
+.p-list{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.p-list li{display:flex;gap:14px;font-size:.9rem;color:var(--text-body);line-height:1.6}
+.p-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:8px;flex-shrink:0}
+
+/* SIDEBAR */
+.p-sidebar{position:sticky;top:110px}
+.p-side-card{background:var(--pure-white);border:1px solid var(--blue-pale);border-radius:var(--radius-lg);padding:34px;box-shadow:var(--shadow-sm);margin-bottom:22px}
+.p-side-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--text-dark);margin-bottom:20px}
+.p-tool-chips{display:flex;flex-wrap:wrap;gap:8px}
+.p-tool-chip{padding:6px 14px;border-radius:20px;background:var(--accent-glow);color:var(--accent);font-size:.72rem;font-weight:600}
+.p-stat-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--blue-pale)}
+.p-stat-row:last-child{border-bottom:none}
+.p-stat-num{font-family:var(--serif);font-size:1.5rem;font-weight:800;color:var(--navy-deep)}
+.p-stat-label{font-size:.76rem;color:var(--text-muted);text-align:right;max-width:150px}
+
+.p-side-cta{display:block;text-align:center;padding:16px;background:var(--navy-deep);color:var(--pure-white);border-radius:var(--radius);font-size:.78rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;transition:all .4s var(--ease-out-expo)}
+.p-side-cta:hover{background:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+/* QUOTE-ISH TAKEAWAY */
+.p-takeaway{background:var(--navy-deep);border-radius:var(--radius-lg);padding:56px 50px;margin-top:20px;position:relative;overflow:hidden}
+.p-takeaway::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(180deg,var(--accent),var(--gold))}
+.p-takeaway-label{font-family:var(--mono);font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.p-takeaway-text{font-family:var(--serif);font-size:1.25rem;font-style:italic;color:var(--blue-pale);line-height:1.7}
+
+/* PROJECT NAV FOOTER */
+.p-switcher{padding:0 0 100px}
+.p-switcher-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.p-switch-card{padding:36px 34px;border:1px solid var(--blue-pale);border-radius:var(--radius-lg);background:var(--pure-white);transition:all .4s var(--ease-out-expo);position:relative}
+.p-switch-card:hover{border-color:var(--accent);box-shadow:var(--shadow-md);transform:translateY(-4px)}
+.p-switch-dir{font-family:var(--mono);font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+.p-switch-next{text-align:right}
+.p-switch-title{font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--text-dark)}
+
+/* FOOTER */
+.footer{background:var(--navy-deep);padding:60px 0 28px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,0.05);flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:var(--serif);font-size:1.5rem;font-weight:800;color:var(--pure-white)}
+.footer-logo span{color:var(--accent)}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{font-size:.8rem;color:var(--blue-mist);font-weight:500}
+.footer-links a:hover{color:var(--pure-white)}
+.footer-bottom{display:flex;justify-content:space-between;padding-top:22px;font-size:.72rem;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:8px}
+
+@media(max-width:900px){
+  .p-grid{grid-template-columns:1fr}
+  .p-sidebar{position:static}
+  .p-switcher-grid{grid-template-columns:1fr}
+  .p-switch-next{text-align:left}
+}
+@media(max-width:600px){
+  .p-meta{flex-direction:column}
+  .p-meta-item{border-right:none;border-bottom:1px solid rgba(8,14,28,0.06);padding-bottom:16px;margin-bottom:16px}
+  .p-visual-inner{aspect-ratio:4/3}
+  .p-takeaway{padding:40px 28px}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">R<span>.</span>Pote</a>
+    <a href="index.html#work" class="nav-back">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      All Projects
+    </a>
+  </div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-hero-blob"></div>
+  <div class="container">
+    <div class="p-eyebrow reveal">Prototyping <span class="p-number">04 / 05</span></div>
+    <h1 class="p-title reveal reveal-delay-1">Tech Show <em>Bike</em></h1>
+    <p class="p-lede reveal reveal-delay-2">Seat and body panel prototyping for a technology showcase motorcycle — a build where the parts had to look finished under show lighting while still holding up structurally through handling and transport.</p>
+    <div class="p-meta reveal reveal-delay-3">
+      <div class="p-meta-item"><div class="p-meta-label">Client</div><div class="p-meta-value">Spark Minda</div></div>
+      <div class="p-meta-item"><div class="p-meta-label">Role</div><div class="p-meta-value">Design Engineer</div></div>
+      <div class="p-meta-item"><div class="p-meta-label">Timeline</div><div class="p-meta-value">Project-based</div></div>
+      <div class="p-meta-item"><div class="p-meta-label">Category</div><div class="p-meta-value">Prototyping</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="p-visual">
+  <div class="container">
+    <div class="p-visual-inner reveal">
+      <div class="p-visual-ring r1"></div>
+      <div class="p-visual-ring r2"></div>
+      <div class="p-visual-icon">🏍️</div>
+      <div class="p-visual-tag">Show-Ready Aesthetics · Structural Validation</div>
+    </div>
+  </div>
+</section>
+
+<section class="p-gallery">
+  <div class="container">
+    <div class="p-gallery-head reveal">
+      <div>
+        <h2 class="p-gallery-title">Project Proof</h2>
+        <p class="p-gallery-sub">Reference shots from CAD to show floor — surface development, prototype fit, and the finished build.</p>
+      </div>
+    </div>
+    <div class="p-gallery-grid">
+      <div class="p-gallery-card reveal">
+        <img src="Bike .jpeg" alt="Tech show bike seat and body panel CAD surface model">
+        <div class="p-gallery-caption">
+          <span class="p-gallery-tag"></span>
+          <div class="p-gallery-name"></div>
+        </div>
+      </div>
+      <div class="p-gallery-card reveal reveal-delay-1">
+        <img src="bike2.jpg" alt="Prototype seat and panel fit check">
+        <div class="p-gallery-caption">
+          <span class="p-gallery-tag"></span>
+          <div class="p-gallery-name"></div>
+        </div>
+      </div>
+      <div class="p-gallery-card reveal reveal-delay-2">
+        <img src="bike3.jpg" alt="Finished tech show motorcycle on display">
+        <div class="p-gallery-caption">
+          <span class="p-gallery-tag"></span>
+          <div class="p-gallery-name"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="p-body">
+  <div class="container p-grid">
+    <div class="p-main">
+      <div class="p-block reveal">
+        <div class="p-block-label">The Challenge</div>
+        <h3 class="p-block-title">Show-floor finish on a compressed timeline</h3>
+        <p class="p-block-text">A tech show build gets judged on sight before anyone touches it, but the seat and body panels still needed to survive repeated handling, transport, and reassembly at the venue — all inside a timeline set by the show date, not the design process.</p>
+      </div>
+      <div class="p-block reveal">
+        <div class="p-block-label">Approach</div>
+        <h3 class="p-block-title">Parallel-tracking aesthetics and structural checks</h3>
+        <p class="p-block-text">I kept surface and structural work moving together rather than sequentially, so a styling change never meant restarting a structural check from zero, and vice versa.</p>
+        <ul class="p-list">
+          <li>Modeled seat and body panel surfaces in Fusion 360, iterating quickly on styling with the design lead's feedback.</li>
+          <li>Checked panel mounting points and seat frame against structural loads expected from handling and transport, not just static display.</li>
+          <li>Built and refined physical prototypes to confirm fit, finish, and panel-to-panel gaps matched the CAD intent.</li>
+          <li>Coordinated with the fabrication team to compress the prototype-to-show timeline without skipping validation steps.</li>
+        </ul>
+      </div>
+      <div class="p-block reveal">
+        <div class="p-block-label">Outcome</div>
+        <h3 class="p-block-title">A validated build, delivered on schedule</h3>
+        <p class="p-block-text">The seat and body panel prototypes reached the show floor with both the finish quality the display required and the structural integrity to survive handling — completed on a shortened development timeline.</p>
+      </div>
+      <div class="p-takeaway reveal">
+        <div class="p-takeaway-label">Key Takeaway</div>
+        <p class="p-takeaway-text">"On a show build, the panel still has to be engineered — it just also has to be beautiful under the lights."</p>
+      </div>
+    </div>
+
+    <aside class="p-sidebar reveal reveal-delay-1">
+      <div class="p-side-card">
+        <div class="p-side-title">Tools & Methods</div>
+        <div class="p-tool-chips">
+          <span class="p-tool-chip">Fusion 360</span>
+          <span class="p-tool-chip">Prototyping</span>
+          <span class="p-tool-chip">Structural Validation</span>
+        </div>
+      </div>
+      <div class="p-side-card">
+        <div class="p-side-title">Impact</div>
+        <div class="p-stat-row"><div class="p-stat-num">20%</div><div class="p-stat-label">Faster development timeline</div></div>
+        <div class="p-stat-row"><div class="p-stat-num">2</div><div class="p-stat-label">Component systems: seat & body panel</div></div>
+        <div class="p-stat-row"><div class="p-stat-num">100%</div><div class="p-stat-label">Show-ready delivery</div></div>
+      </div>
+      <a href="index.html#contact" class="p-side-cta">Discuss a Project →</a>
+    </aside>
+  </div>
+</section>
+
+<section class="p-switcher">
+  <div class="container p-switcher-grid">
+    <a href="project-03-safe-organizer-systems.html" class="p-switch-card reveal">
+      <div class="p-switch-dir">← Previous</div>
+      <div class="p-switch-title">Safe Organizer Systems</div>
+    </a>
+    <a href="project-05-detachable-seat.html" class="p-switch-card p-switch-next reveal reveal-delay-1">
+      <div class="p-switch-dir">Next →</div>
+      <div class="p-switch-title">Detachable Two-Wheeler Seat</div>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">R<span>.</span>Pote</div>
+      <div class="footer-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Rushikesh Pote. All rights reserved.</span>
+      <span>poterushikesh38@gmail.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.reveal').forEach(el=>{
+  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  io.observe(el);
+});
+</script>
+</body>
+</html>
